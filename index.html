@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新婚快乐</title>
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        .test, #chart {
+            width: 800px;
+            height: 600px;
+        }
+        body {
+            background-color: #FF9494;
+        }
+    </style>
+</head>
+<body>
+    <div class="test">
+        <div id="chart"></div>
+    </div>
+    <script src="dist/b2wordcloud.js"></script>
+    <script>
+        var mywords=['Liebe', 'ፍቅር', 'Lufu', 'حب', 'Aimor', 'Amor', 'Heyran', 'ভালোবাসা', 'Каханне', 'Любоў', 'Любов', 'བརྩེ་དུང་།', 'Ljubav', 'Karantez', 'Юрату', 'Láska', 'Amore', 'Cariad', 'Kærlighed', 'Armastus', 'Αγάπη', 'Amo', 'Amol', 'Maitasun', 'عشق', 'Pyar', 'Amour', 'Leafde', 'Gràdh', '愛', 'પ્રેમ', '사랑', 'Սեր', 'Ihunanya', 'Cinta', 'ᑕᑯᑦᓱᒍᓱᑉᐳᖅ', 'Ást', 'אהבה', 'ಪ್ರೀತಿ', 'სიყვარული', 'Махаббат', 'Pendo', 'Сүйүү', 'Mīlestība', 'Meilė', 'Leefde', 'Bolingo', 'Szerelem', 'Љубов', 'സ്നേഹം', 'Imħabba', 'प्रेम', 'Ái', 'Хайр', 'အချစ်', 'Tlazohtiliztli', 'Liefde', 'माया', 'मतिना', 'Kjærlighet', 'Kjærleik', 'ପ୍ରେମ', 'Sevgi', 'ਪਿਆਰ', 'پیار', 'Miłość', 'Leevde', 'Dragoste', 'Khuyay', 'Любовь', 'Таптал', 'Dashuria', 'Amuri', 'ආදරය', 'Ljubezen', 'Jaceyl', 'خۆشەویستی', 'Љубав', 'Rakkaus', 'Kärlek', 'Pag-ibig', 'காதல்', 'ప్రేమ', 'ความรัก', 'Ишқ', 'Aşk', 'محبت', 'Tìnhyêu', 'Higugma', 'ליבע'];
+        let max = 10;
+        let min = 1;
+        let keywords={'郑丹 南金胜': 15, 'LOVE': 10, '爱': 10}
+
+        mywords.forEach(function(element) {
+        keywords[element]=parseInt(Math.random() * (max - min + 1) + min);;
+        })
+
+        var words = []
+        for (var i in keywords) {
+            words.push([i, keywords[i]])
+        }
+        // return
+        var wordCloud = new B2wordcloud(document.getElementById("chart"), {
+            list: words,
+            tooltip: {
+                show: false,
+            },
+
+            fontFamily: 'Times, serif',
+            color: function (word, weight) {
+                return (weight === 15) ? '#FFF5E4' : ['#FFE3E1', '#FFD1D1'];
+            },
+            drawOutOfBound: false,
+            autoFontSize: true,
+
+            rotationSteps: 2,
+            gridSize: 2,
+            shadowOffsetX: 1,
+            shadowOffsetY: 1,
+            shadowBlur: 1,
+            shadowColor: 'rgba(0,0,0,0)',
+            maskImage: './src/logo.png',
+            backgroundColor: '#FF9494',
+        })
+    </script>
+</body>
+</html>
