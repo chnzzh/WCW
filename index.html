@@ -5,24 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>新婚快乐</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
     <style>
-        body, html {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-        }
-        .test, #chart {
-            width: 800px;
-            height: 600px;
-        }
         body {
             background-color: #FF9494;
         }
     </style>
 </head>
 <body>
-    <div class="test">
-        <div id="chart"></div>
+    <div class="container">
+        <div class="row">
+        <div class="col-lg col-md col-sm col-xs center-block" style="width: 100%">
+        <div id="chart1" style="width: 880px; height: 785px;"></div>
+        <div id="chart2" style="width: 880px; height: 880px;"></div>
+        </div>
+        </div>
     </div>
     <script src="dist/b2wordcloud.js"></script>
     <script>
@@ -35,12 +33,12 @@
         keywords[element]=parseInt(Math.random() * (max - min + 1) + min);;
         })
 
-        var words = []
+        var words = [];
         for (var i in keywords) {
             words.push([i, keywords[i]])
-        }
+        };
         // return
-        var wordCloud = new B2wordcloud(document.getElementById("chart"), {
+        var wordCloud1 = new B2wordcloud(document.getElementById("chart1"), {
             list: words,
             tooltip: {
                 show: false,
@@ -61,7 +59,39 @@
             shadowColor: 'rgba(0,0,0,0)',
             maskImage: './src/logo.png',
             backgroundColor: '#FF9494',
+        });
+
+
+        let dh_words=['缔结良缘', '笙磬同音', '百年琴瑟', '百年偕老', '鸾凤和鸣', '美满家庭', '两情相悦', '琴瑟合鸣', '心心相印', '交颈鸳鸯', '白首成约', '琴瑟友之', '书称厘降', '天作之合', '才子佳人', '两情相悦', '龙腾凤翔', '盟结良缘', '福禄鸳鸯', '天地配合', '于飞之乐', '鸳鸯比翼', '燕侣双俦', '心心相印', '良缘夙缔', '爱情永固', '花好月圆', '许定终身', '螽斯衍庆', '鸳鸯壁合', '钟鼓乐之', '乾坤定奏', '同心和好', '鱼水相谐', '珠联壁合', '万年富贵', '成双成业', '鸿案相庄', '琴耽瑟好', '螽斯衍庆', '白首成约', '诗咏好逑', '永浴爱河', '天生一对', '赤绳系足', '花好月圆', '海燕双栖', '天缘巧合', '琴瑟在御', '如鼓琴瑟', '永浴爱河', '于飞之乐', '诗题红叶', '文定吉祥', '宜室宜家', '龙腾凤翔', '永结同心', '琴瑟友之', '鸿案相庄', '百年偕老', '琴瑟在御', '鸡鸣戒旦', '缔结良缘', '诗咏好逑', '花开富贵', '海燕双栖', '终身之盟', '情投意合', '宜室宜家', '缘定三生', '五世其昌', '连理交枝', '乾坤和乐', '连理交枝', '如鼓琴瑟', '美满家园', '成双成业', '姻缘相配', '鸳鸯壁合', '相亲相爱', '佳偶天成', '爱情永固', '琴瑟和鸣', '乾坤定奏', '乐赋唱随', '笙磬同音', '和乐鱼水', '瓜瓞延绵', '花开并蒂', '鸾凤和鸣', '兰菊庭芳', '才子佳人', '神仙眷属', '新婚志喜', '凤翥龙翔', '琴耽瑟好', '文定吉祥', '诗题红叶', '甜蜜佳缘', '百年琴瑟', '天生一对', '良缘夙缔', '玉树琼枝', '兰菊庭芳', '相敬如宾', '新婚志喜', '姻缘相配', '赤绳系足', '缘订三生', '相敬如宾', '盟结良缘', '同德同心', '五世其昌', '万年富贵', '天作之合', '有情成眷', '凤凰于飞'];
+        let keywords2={};
+        dh_words.forEach(function(element) {
+            keywords2[element]=parseInt(1);
         })
+        var words2 = [];
+        for (var i in keywords2) {
+            words2.push([i, keywords2[i]])
+        }
+        var wordCloud2 = new B2wordcloud(document.getElementById("chart2"), {
+            list: words2,
+            tooltip: {
+                show: false,
+            },
+
+            fontFamily: 'Times, serif',
+            color: ['#FFF5E4', '#FFE3E1', '#FFD1D1'],
+            drawOutOfBound: false,
+            autoFontSize: true,
+
+            rotationSteps: 2,
+            gridSize: 2,
+            shadowOffsetX: 1,
+            shadowOffsetY: 1,
+            shadowBlur: 1,
+            shadowColor: 'rgba(0,0,0,0)',
+            maskImage: './src/dh.png',
+            backgroundColor: '#FF9494',
+        })
+
     </script>
 </body>
 </html>
